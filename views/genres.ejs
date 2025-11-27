@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <%-include('partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/genres.css">
+  <script src="/js/common.js" defer></script>
+</head>
+
+<body class="genresPage">
+  <%-include('partials/header') %>
+  <section><%- include('partials/searchForm', {searchPrompt: '', name: 'genreName', id: 'genreName', placeholder: 'Search for a genre'}) %></section>
+
+
+
+  <section class="container">
+    <div>
+      <h1><%= title %></h1>
+      <button class="addBtn"><a href="genres/add">Add Genre</a></button>
+    </div>
+    <% if(searchPrompt) { %>
+    <div>Search Results for "<%= searchPrompt %>"</div>
+    <%} %>
+
+    <div class="genres">
+      <% if(locals.genres) { %>
+      <% genres.forEach((genre) => { %>
+      <div class="genre card" id="<%= genre.id %>">
+        <%- include('partials/genre', {genre})%>
+      </div>
+      <% }) %>
+
+      <%} %>
+      <% if(!locals.genres || locals.genres.length < 1) { %>
+      <div>No genres found.</div>
+      <% } %>
+    </div>
+  </section>
+
+
+</body>
+
+</html>

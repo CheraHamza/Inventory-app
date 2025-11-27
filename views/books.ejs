@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <%-include('partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/books.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/filter.js" defer></script>
+</head>
+
+<body class="booksPage">
+  <%-include('partials/header') %>
+  <section><%- include('partials/searchForm', {searchPrompt: searchPrompt, name: 'title', id: 'title', placeholder: 'Search for a title'}) %></section>
+
+  <div>
+    <section class="filters">
+      <h1>Filters</h1>
+      <div>
+        <h3>Genres</h3>
+        <div class="genres">
+          <% if(locals.genres) {%> <% genres.forEach((genre)=> {%>
+          <button class="genre" data-genreId="<%= genre.id %>">
+            <%= genre.name%>
+          </button>
+          <%}) }%>
+          <% if(!locals.genres || locals.genres.length < 1) { %>
+          <span class="empty">No genres found.</span>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
+        <h3>Authors</h3>
+        <div class="authors">
+          <% if(locals.authors) {%> <% authors.forEach((author) => { %>
+          <button class="author" data-authorId="<%= author.id %>">
+            <%= author.name%>
+          </button>
+          <%}) }%>
+          <% if(!locals.authors || locals.authors.length < 1) { %>
+          <span class="empty">No authors found.</span>
+          <% } %>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div>
+        <h1><%= title %></h1>
+        <button class="addBtn"><a href="books/add">Add Book</a></button>
+      </div>
+      <% if(searchPrompt) { %>
+      <div>Search Results for "<%= searchPrompt %>"</div>
+      <%} %>
+      <div class="books">
+        <% if(locals.books) {%> <% books.forEach((book) => {%>
+        <div class="book card" id="<%= book.id%>">
+          <%- include('partials/book', {book}) %>
+        </div>
+        <%}) } %>
+        <% if(!locals.books || locals.books.length < 1) { %>
+        <div>No books found.</div>
+        <% } %>
+      </div>
+    </section>
+  </div>
+
+
+</body>
+
+</html>

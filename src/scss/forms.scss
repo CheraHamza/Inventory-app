@@ -1,0 +1,240 @@
+$olive-green: #606c38;
+$dark-olive-green: #283618;
+$white-cream: #fefae0;
+$light-brown: #dda15e;
+$dark-brown: #bc6c25;
+
+.form--book,
+.form--author,
+.form--genre {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+
+	form {
+		width: min(400px, 80%);
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+
+			span {
+				font-size: 13px;
+				color: rgba(0, 0, 0, 0.7);
+			}
+
+			span.error-msg {
+				font-size: 12px;
+				color: red;
+				text-transform: uppercase;
+			}
+
+			input,
+			textarea,
+			select#status {
+				border: 1px $dark-olive-green solid;
+				border-radius: 5px;
+				padding: 5px;
+			}
+
+			textarea {
+				min-height: 150px;
+				resize: vertical;
+			}
+		}
+
+		input#new_author_input,
+		input#new_genre_input {
+			width: 300px;
+			border: 1px $dark-olive-green solid;
+			border-radius: 5px;
+			padding: 5px;
+		}
+
+		.authors-wrapper,
+		.genres-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+
+			button {
+				font-size: 12px;
+				background-color: $dark-brown;
+				color: $white-cream;
+				border: 1px solid $dark-olive-green;
+				padding: 5px 10px;
+				border-radius: 5px;
+
+				cursor: pointer;
+
+				transition: all 0.1s ease-in-out;
+
+				&:hover {
+					background-color: $white-cream;
+					color: $dark-brown;
+				}
+
+				&.new-author-btn,
+				&.new-genre-btn {
+					background-color: $dark-olive-green;
+
+					&:hover {
+						background-color: $white-cream;
+						color: $dark-olive-green;
+					}
+				}
+			}
+
+			div.selected-authors,
+			div.selected-genres {
+				border: 1px solid $dark-olive-green;
+				border-radius: 5px;
+			}
+
+			& > div:first-of-type {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+		}
+
+		button.submitBtn {
+			background-color: #486c38;
+			color: $white-cream;
+			padding-block: 10px;
+			border: 2px #486c38 solid;
+			border-radius: 5px;
+
+			cursor: pointer;
+
+			transition: all 0.1s ease-in-out;
+			&:hover {
+				background-color: $white-cream;
+				color: #486c38;
+			}
+		}
+
+		button.cancelBtn {
+			display: flex;
+			justify-content: center;
+			background-color: transparent;
+			border: none;
+
+			a {
+				width: 100%;
+				height: 100%;
+				background-color: $white-cream;
+				color: #bc3225;
+				padding-block: 10px;
+				border: 2px #bc3225 solid;
+				border-radius: 5px;
+
+				cursor: pointer;
+
+				transition: all 0.1s ease-in-out;
+				&:hover {
+					background-color: #bc3225;
+					color: $white-cream;
+				}
+			}
+		}
+	}
+
+	.help {
+		font-size: 11px;
+		color: green;
+	}
+
+	.title-container,
+	.name-container {
+		position: relative;
+		display: flex;
+
+		input {
+			flex: 1;
+		}
+
+		button {
+			position: absolute;
+			right: -5px;
+			transform: translateX(100%);
+			width: 25px;
+			border: none;
+			background-color: transparent;
+			cursor: pointer;
+
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				scale: 1.1;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	ul.errors {
+		width: min(400px, 80%);
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+
+		list-style-position: inside;
+		li {
+			font-size: 12px;
+			color: #bc3225;
+		}
+	}
+}
+
+.form--book {
+	form {
+		.existing-authors,
+		.existing-genres {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+
+			border: 1px solid black;
+			border-radius: 5px;
+			padding: 5px;
+
+			max-height: 100px;
+			overflow-y: auto;
+
+			span.empty {
+				font-size: 14px;
+				color: rgba(0, 0, 0, 0.499);
+			}
+		}
+
+		span.author-label,
+		span.genre-label {
+			font-size: 13px;
+		}
+
+		.selected-authors,
+		.selected-genres {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			border: 1px solid black;
+			padding: 10px;
+		}
+	}
+
+	ul.new-author-errors,
+	ul.new-genre-errors {
+		list-style-position: inside;
+		li {
+			font-size: 12px;
+			color: #bc3225;
+		}
+	}
+}

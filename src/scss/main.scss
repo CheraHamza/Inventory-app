@@ -1,0 +1,470 @@
+@font-face {
+	font-family: "Ubuntu";
+	src: url("/fonts/Ubuntu.ttf") format("truetype");
+}
+
+$olive-green: #606c38;
+$dark-olive-green: #283618;
+$white-cream: #fefae0;
+$light-brown: #dda15e;
+$dark-brown: #bc6c25;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Ubuntu";
+	color: $dark-olive-green;
+
+	scrollbar-width: thin;
+	scrollbar-color: #dda25ec1 transparent;
+}
+
+html,
+body {
+	min-height: 100vh;
+	max-width: 100vw;
+	scrollbar-width: thin;
+	scrollbar-color: transparent;
+}
+
+body {
+	background-color: $white-cream;
+	padding: 10px;
+}
+
+header {
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+	}
+
+	img.logo {
+		width: 30px;
+		height: 30px;
+	}
+
+	h3.text-logo {
+		color: $light-brown;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+
+	& > section,
+	& > div {
+		width: min(1200px, 100%);
+	}
+
+	form.search-form {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		gap: 5px;
+		padding-block: 10px;
+
+		input {
+			width: 250px;
+			height: 30px;
+			padding: 5px;
+
+			border: $dark-olive-green 2px solid;
+			border-radius: 10px;
+			background-color: $white-cream;
+			color: $dark-olive-green;
+		}
+
+		button {
+			width: 30px;
+			height: 30px;
+			background-color: transparent;
+			border: transparent 1px solid;
+			cursor: pointer;
+
+			&:hover > img {
+				transform: scale(1.1);
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				transition: all 0.2s ease-out;
+			}
+		}
+	}
+
+	.card {
+		dialog[open].detailsModal {
+			position: fixed;
+			margin: auto;
+			width: min(95%, 600px);
+			max-height: 90vh;
+			overflow-y: auto;
+			scrollbar-width: thin;
+
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			padding: 20px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.541);
+			background-color: $white-cream;
+
+			cursor: default;
+
+			&::backdrop {
+				background-color: rgba(0, 0, 0, 0.499);
+			}
+
+			.close-btn {
+				position: sticky;
+				top: 0px;
+				margin-left: auto;
+				width: fit-content;
+				background-color: rgba(0, 0, 0, 0.432);
+				color: $white-cream;
+				border: $dark-olive-green;
+				font-size: 15px;
+				padding: 5px 9px;
+				border-radius: 100px;
+				transition: all 0.15s ease-in-out;
+
+				cursor: pointer;
+
+				&:hover {
+					background-color: $dark-olive-green;
+				}
+			}
+
+			&.book {
+				.cover-wrapper,
+				.authors-wrapper,
+				.genres-wrapper,
+				.pages-wrapper,
+				.published-wrapper,
+				.isbn-wrapper,
+				.status-wrapper,
+				.description-wrapper,
+				.learnMore-wrapper {
+					display: flex;
+					align-items: center;
+					gap: 5px;
+
+					p {
+						font-size: 12px;
+					}
+				}
+
+				.cover-wrapper {
+					flex-direction: column;
+					align-items: center;
+
+					.picture-container {
+						width: 250px;
+					}
+				}
+
+				.authors-wrapper,
+				.genres-wrapper {
+					align-items: baseline;
+				}
+
+				.pages-wrapper,
+				.published-wrapper,
+				.isbn-wrapper,
+				.status-wrapper {
+					p {
+						color: rgba(0, 0, 0, 0.499);
+						border-radius: 2px;
+						padding: 2px;
+						background-color: rgba(0, 0, 0, 0.145);
+					}
+				}
+
+				.status-wrapper {
+					p::first-letter {
+						text-transform: capitalize;
+					}
+				}
+
+				.description-wrapper {
+					flex-direction: column;
+					align-items: start;
+
+					p {
+						white-space: pre-wrap;
+					}
+				}
+
+				.learnMore-wrapper {
+					button {
+						background-color: $dark-olive-green;
+						border: $dark-olive-green 2px solid;
+						border-radius: 5px;
+						transition: all 0.15s ease-in;
+
+						a {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							padding: 5px 10px;
+							width: 100%;
+							height: 100%;
+							color: $white-cream;
+							transition: all 0.15s ease-in;
+						}
+
+						&:hover {
+							background-color: $white-cream;
+
+							a {
+								color: $dark-olive-green;
+							}
+						}
+					}
+				}
+			}
+
+			&.author,
+			&.genre {
+				.cover-wrapper,
+				.biography-wrapper,
+				.description-wrapper,
+				.works-wrapper,
+				.books-wrapper {
+					display: flex;
+					flex-direction: column;
+					gap: 5px;
+
+					p {
+						font-size: 12px;
+					}
+				}
+
+				.cover-wrapper {
+					align-items: center;
+
+					.picture-container {
+						width: 250px;
+					}
+				}
+
+				.biography-wrapper,
+				.description-wrapper {
+					p {
+						white-space: pre-wrap;
+					}
+				}
+
+				.works-wrapper,
+				.books-wrapper {
+					.works,
+					.books {
+						display: flex;
+						flex-wrap: wrap;
+						gap: 5px;
+
+						.work,
+						.book {
+							width: 100px;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							gap: 5px;
+
+							.cover-container {
+								width: 100%;
+								aspect-ratio: 2 / 3;
+								overflow: hidden;
+
+								border-radius: 5px;
+							}
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+								object-position: center;
+							}
+
+							p {
+								font-size: 10px;
+								font-weight: 600;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+		}
+		.empty {
+			font-size: 12px;
+			color: rgba(0, 0, 0, 0.5);
+		}
+	}
+}
+
+body {
+	section.container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		& > div:first-child {
+			display: flex;
+			align-items: center;
+		}
+
+		.addBtn {
+			display: flex;
+			justify-content: center;
+			border: none;
+			margin-left: auto;
+			a {
+				width: 100%;
+				padding: 10px 20px;
+				background-color: #486c38;
+				color: $white-cream;
+				border-radius: 5px;
+				border: #486c38 2px solid;
+
+				transition: all 0.1s ease-in-out;
+
+				&:hover {
+					background-color: $white-cream;
+					color: #486c38;
+				}
+			}
+		}
+
+		.actionBtns {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			margin-top: auto;
+
+			button.updateBtn {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				border: none;
+			}
+
+			button.updateBtn > a,
+			button.deleteBtn {
+				width: 100%;
+				background-color: $dark-olive-green;
+				color: $white-cream;
+				padding: 10px 5px;
+				border-radius: 5px;
+				border: $white-cream 2px solid;
+
+				transition: all 0.1s ease-in-out;
+
+				&:hover {
+					border-color: $dark-olive-green;
+					background-color: $white-cream;
+					color: $dark-olive-green;
+				}
+			}
+
+			button.deleteBtn {
+				background-color: #bc3225;
+				cursor: pointer;
+
+				&:hover {
+					border-color: #bc3225;
+					background-color: $white-cream;
+					color: #bc3225;
+				}
+			}
+		}
+	}
+}
+
+@media (width <= 700px) {
+	body {
+		section.container {
+			& > div {
+				flex-direction: column;
+				align-items: start;
+			}
+		}
+	}
+}
+
+dialog[open].confirmModal {
+	position: fixed;
+	margin: auto;
+	width: min(500px, 90%);
+
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	border: none;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: $white-cream;
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.541);
+
+	cursor: default;
+
+	&::backdrop {
+		background-color: rgba(0, 0, 0, 0.499);
+	}
+
+	p > span {
+		font-weight: bold;
+	}
+
+	.buttons {
+		display: flex;
+		justify-content: end;
+		align-items: center;
+		gap: 10px;
+
+		button {
+			border: 2px solid;
+			border-radius: 5px;
+			color: $white-cream;
+			padding: 10px 20px;
+			cursor: pointer;
+
+			transition: all 0.1s ease-in-out;
+
+			&.confirm-btn {
+				border-color: #bc3225;
+				background-color: #bc3225;
+
+				&:hover {
+					background-color: transparent;
+					color: #bc3225;
+				}
+			}
+			&.cancel-btn {
+				display: flex;
+				justify-content: center;
+				color: $dark-olive-green;
+				background-color: transparent;
+
+				&:hover {
+					background-color: $dark-olive-green;
+					color: $white-cream;
+				}
+			}
+		}
+	}
+}

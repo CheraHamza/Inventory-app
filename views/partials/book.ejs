@@ -1,0 +1,96 @@
+<div class="picture-container">
+  <img class="cover" src="<%= book.cover_url%>" alt="book cover" />
+</div>
+
+<h3 class="title"><%= book.title%></h3>
+<div class="authors">
+  <% book.authors.forEach((author) => {%>
+  <span class="authorName" data-authorId="<%= author.id %>"> <%= author.name %> </span>
+  <%}) %>
+  <% if(book.authors.length < 1) { %>
+  <span class="authorName">No Authors</span>
+  <%} %>
+</div>
+<div class="genres"><% book.genres.forEach((genre) => {%>
+  <span class="genreName" data-genreId="<%= genre.id %>"> <%= genre.name %> </span>
+  <%}) %>
+  <% if(book.genres.length < 1) { %>
+  <span class="genreName">No Genres</span>
+  <%} %>
+</div>
+<div class="actionBtns">
+  <button class="updateBtn">
+    <a href="books/update/<%= book.id %>">Update</a>
+  </button>
+  <button class="deleteBtn" data-id="<%= book.id %>">Delete</button>
+</div>
+
+<dialog class="detailsModal book" id="id<%= book.id %>">
+  <button class="close-btn">X</button>
+  <div class="cover-wrapper">
+    <div class="picture-container">
+      <img class="cover" src="<%= book.cover_url%>" alt="book cover" />
+    </div>
+    <h3 class="title"><%= book.title%></h3>
+  </div>
+  <div class="authors-wrapper">
+    <h5>Authors</h5>
+    <div class="authors">
+      <% book.authors.forEach((author) => {%>
+      <span class="authorName" data-authorId="<%= author.id %>"> <%= author.name %> </span>
+      <%}) %>
+      <% if(book.authors.length < 1) { %>
+      <span class="authorName">No Authors</span>
+      <%} %>
+    </div>
+  </div>
+  <div class="genres-wrapper">
+    <h5>Genres</h5>
+    <div class="genres"><% book.genres.forEach((genre) => {%>
+      <span class="genreName" data-genreId="<%= genre.id %>"> <%= genre.name %> </span>
+      <%}) %>
+      <% if(book.genres.length < 1) { %>
+      <span class="genreName">No Genres</span>
+      <%} %>
+    </div>
+  </div>
+  <div class="pages-wrapper">
+    <h5>Pages</h5>
+    <p>
+      <%= book.length %>
+    </p>
+  </div>
+  <div class="published-wrapper">
+    <h5>Published on</h5>
+    <p>
+      <%= book.published_year%>
+    </p>
+  </div>
+  <div class="isbn-wrapper">
+    <h5>ISBN</h5>
+    <p>
+      <%= book.isbn%>
+    </p>
+  </div>
+  <div class="status-wrapper">
+    <h5>Reading Status</h5>
+    <p>
+      <%= book.status %>
+    </p>
+  </div>
+  <div class="description-wrapper">
+    <h5>Description</h5>
+    <p>
+      <%= book.description %>
+    </p>
+  </div>
+  <div class="learnMore-wrapper">
+    <button>
+      <a href="<%= book.more_details_url%>" target="_blank">
+        Learn More
+      </a>
+    </button>
+  </div>
+</dialog>
+
+<%-include('confirmModal', {id: book.id, action: '/books/delete',type: 'book', value: book.title}) %>

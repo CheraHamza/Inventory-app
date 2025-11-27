@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <%-include('../partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  <script src="/js/formHelp.js" defer></script>
+</head>
+
+<body class="form--genre">
+  <%- include('../partials/header') %>
+  <h2><%= title %></h2>
+  <span class="help">Need help? Type the desired genre name and click the search icon*</span>
+  <form action="/genres/<%= action %><%= locals.action === 'update' ? `/${genreInfo.id}` : '' %>" method="post" class="genre-form">
+    <label for="name">
+      <div class="label-container">
+        <span>Name*</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.name) { %>
+          <%= errors.name[0] %>
+          <% } %>
+        </span>
+      </div>
+
+      <div class="name-container">
+        <input placeholder="e.g. Fantasy" class="genre" type="text" name="name" id="name" value="<%= locals.previousValues && previousValues.name ? previousValues.name : locals.action === 'update' ? genreInfo.name : '' %>">
+        <button type="button" class="genre-search"><img src="/icons/search.svg" alt=""></button>
+      </div>
+    </label>
+    <label for="picture_url">
+      <div class="label-container">
+        <span>Link to genre picture</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.picture_url) { %>
+          <%= errors.picture_url[0] %>
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. https://www.pictureexample.png" type="text" name="picture_url" id="picture_url" value="<%= locals.previousValues && previousValues.picture_url ? previousValues.picture_url : locals.action === 'update' ? genreInfo.picture_url : '' %>">
+    </label>
+
+    <label for="description">
+      <div class="label-container">
+        <span>Description</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.description) { %>
+          <%= errors.description[0] %>
+          <% } %>
+        </span>
+      </div>
+
+      <textarea placeholder="e.g. Fantasy is a genre of speculative fiction that involves supernatural or magical elements, often including completely imaginary realms and creatures." name="description" id="description"><%= locals.previousValues && previousValues.description ? previousValues.description : locals.action === 'update' ? genreInfo.description : '' %></textarea>
+    </label>
+    <button class="submitBtn" type="submit">Submit</button>
+    <button class="cancelBtn" type="button"><a href="/genres">Cancel</a></button>
+  </form>
+</body>
+
+</html>

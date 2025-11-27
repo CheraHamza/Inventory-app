@@ -1,0 +1,43 @@
+<div class="picture-container">
+  <img src=<%= genre.picture_url %> alt="">
+</div>
+<h4><%= genre.name %></h4>
+<div class="actionBtns">
+  <button class="updateBtn">
+    <a href="genres/update/<%= genre.id %>">Update</a>
+  </button>
+  <button class="deleteBtn" data-id="<%= genre.id %>">Delete</button>
+</div>
+
+
+<dialog class="detailsModal genre" id="id<%= genre.id %>">
+  <button class="close-btn">X</button>
+  <div class="cover-wrapper">
+    <div class="picture-container">
+      <img class="picture" src=<%= genre.picture_url %> alt="genre image" />
+    </div>
+    <h3 class="name"><%= genre.name%></h3>
+  </div>
+  <div class="description-wrapper">
+    <h5>Description</h5>
+    <p><%= genre.description %></p>
+  </div>
+  <div class="books-wrapper">
+    <h5>Books in Genre</h5>
+    <div class="books">
+      <% genre.books.forEach((book) => { %>
+      <div class="book">
+        <div class="cover-container">
+          <img class="cover" src="<%= book.cover_url %>">
+        </div>
+        <p><%= book.title  %></p>
+      </div>
+      <% }) %>
+      <% if(!locals.genre.books || genre.books.length < 1) { %>
+      <p class="empty">No books found in this genre.</p>
+      <% } %>
+    </div>
+  </div>
+</dialog>
+
+<%-include('confirmModal', {id: genre.id, action: '/genres/delete',type: 'genre', value: genre.name}) %>

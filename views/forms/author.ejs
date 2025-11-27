@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <%-include('../partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  <script src="/js/formHelp.js" defer></script>
+</head>
+
+<body class="form--author">
+  <%- include('../partials/header') %>
+  <h2><%= title %></h2>
+  <span class="help">Need help? Type the desired author name and click the search icon*</span>
+  <form action="/authors/<%= action %><%= locals.action === 'update' ? `/${authorInfo.id}` : '' %>" method="post" class="author-form">
+    <label for="name">
+      <div class="label-container">
+        <span>Full Name*</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.name) { %>
+          <%= errors.name[0] %>
+          <% } %>
+        </span>
+      </div>
+
+      <div class="name-container">
+        <input placeholder="e.g. Albert Camus" class="author" type="text" name="name" id="name" value="<%= locals.previousValues && previousValues.name ? previousValues.name : locals.action === 'update' ? authorInfo.name : '' %>">
+        <button type="button" class="author-search"><img src="/icons/search.svg" alt=""></button>
+      </div>
+
+
+    </label>
+    <label for="picture_url">
+      <div class="label-container">
+        <span>Link to author picture</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.picture_url) { %>
+          <%= errors.picture_url[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. https://www.pictureexample.png" type="text" name="picture_url" id="picture_url" value="<%= locals.previousValues && previousValues.picture_url ? previousValues.picture_url : locals.action === 'update' ? authorInfo.picture_url : '' %>">
+    </label>
+    <label for="birth_year">
+      <div class="label-container">
+        <span>Birth Year</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.birth_year) { %>
+          <%= errors.birth_year[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. 1982, 200 BC" type="text" name="birth_year" id="birth_year" value="<%= locals.previousValues && previousValues.birth_year ? previousValues.birth_year : locals.action === 'update' ? authorInfo.birth_year : '' %>">
+    </label>
+    <label for="death_year">
+      <div class="label-container">
+        <span>Death Year</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.death_year) { %>
+          <%= errors.death_year[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. Present, 1980, 200 BC " type="text" name="death_year" id="death_year" value="<%= locals.previousValues && previousValues.death_year ? previousValues.death_year : locals.action === 'update' ? authorInfo.death_year : '' %>">
+    </label>
+    <label for="bio">
+      <div class="label-container">
+        <span>Biography</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.bio) { %>
+          <%= errors.bio[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <textarea placeholder="e.g. Albert Camus was a French philosopher, novelist, author, dramatist, journalist, world federalist, and political activist." name="bio" id="bio"> <%= locals.previousValues && previousValues.bio ? previousValues.bio : locals.action === 'update' ? authorInfo.bio : '' %></textarea>
+    </label>
+    <button class="submitBtn" type="submit">Submit</button>
+    <button class="cancelBtn" type="button"><a href="/authors">Cancel</a></button>
+  </form>
+</body>
+
+</html>

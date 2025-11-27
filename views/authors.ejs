@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <%-include('partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/authors.css">
+  <script src="/js/common.js" defer></script>
+</head>
+
+<body class="authorsPage">
+  <%-include('partials/header') %>
+  <section><%- include('partials/searchForm', {searchPrompt: searchPrompt, name: 'authorName', id: 'authorName', placeholder: 'Search for an author'}) %></section>
+
+
+  <section class="container">
+    <div>
+      <h1><%= title %></h1>
+      <button class="addBtn"><a href="authors/add">Add Author</a></button>
+    </div>
+    <% if(searchPrompt) { %>
+    <div>Search Results for "<%= searchPrompt %>"</div>
+    <%} %>
+
+    <div class="authors">
+      <% if(locals.authors) { %>
+      <% authors.forEach((author) => { %>
+      <div class="author card" id="<%= author.id%>">
+        <%- include('partials/author', {author}) %>
+      </div>
+      <% })} %>
+      <% if(!locals.authors || locals.authors.length < 1) { %>
+      <div>No authors found.</div>
+      <% } %>
+    </div>
+  </section>
+
+</body>
+
+</html>

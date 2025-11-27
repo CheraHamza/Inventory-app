@@ -1,0 +1,9 @@
+<dialog class="confirmModal" id="id<%=id %>">
+  <p>Are you sure you want to delete the <%= type %> <span> <%= value %></span>?</p>
+  <div class="buttons">
+    <button class="cancel-btn">Cancel</button>
+    <form action="<%=action %>" method="POST">
+      <input type="hidden" name="id" id="id" value="<%= id %>">
+      <button class="confirm-btn" type="submit">Delete</button>
+    </form>
+</dialog>

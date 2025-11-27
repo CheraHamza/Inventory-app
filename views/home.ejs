@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title%></title>
+  <%-include('partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body class="homepage">
+  <%- include('partials/header') %>
+  <section class="hero">
+    <h1>Welcome to the Hambrary</h1>
+    <p>Your personal library management system.</p>
+  </section>
+  <section class="links">
+    <section class="books">
+      <img class="bg" src="/images/books.jpg" alt="">
+      <button><a href="/books">Books <span class="arrow">→</span></a></button>
+    </section>
+    <section class="authors">
+      <img class="bg" src="/images/authors.jpg" alt="">
+      <button><a href="/authors">Authors <span class="arrow">→</span></a></button>
+    </section>
+    <section class="genres">
+      <img class="bg" src="/images/genres.jpg" alt="">
+      <button><a href="/genres">Genres <span class="arrow">→</span></a></button>
+    </section>
+  </section>
+</body>
+
+</html>
+
+
+
+
+<!-- <div>
+  <h2>Browse</h2>
+  <section class="browse">
+    <button><a href="/browse/books">Books</a></button>
+    <button><a href="/browse/authors">Authors</a></button>
+    <button><a href="/browse/genres">Genres</a></button>
+  </section>
+</div>
+<div>
+  <h2>Manage</h2>
+  <section class="manage">
+    <button><a href="/manage/books">Books</a></button>
+    <button><a href="/manage/authors">Authors</a></button>
+    <button><a href="/manage/genres">Genres</a></button>
+  </section>
+</div> -->

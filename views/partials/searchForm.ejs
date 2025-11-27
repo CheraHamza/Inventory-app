@@ -1,0 +1,14 @@
+<form class="search-form" action="" method="get">
+  <input type="search" name="<%= name %>" id="<%= id %>" placeholder="<%= placeholder %>" value="<%= searchPrompt%>" />
+  <button type="submit">
+    <img src="/icons/search.svg" alt="">
+  </button>
+</form>
+
+<script>
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      document.getElementById("<%= id %>").value = "";
+    }
+  });
+</script>

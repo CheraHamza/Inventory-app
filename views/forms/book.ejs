@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <%-include('../partials/favicon') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/forms.css" />
+  <script src="/js/selectableItems.js" defer></script>
+  <script src="/js/formHelp.js" defer></script>
+</head>
+
+<body class="form--book">
+  <%-include('../partials/header') %>
+  <h2><%= title %></h2>
+  <span class="help">Need help? Type the desired book title and click the search icon*</span>
+  <form action="/books/<%= action %><%= locals.action === 'update' ? `/${bookInfo.id}` : ''%>" method="post" class="book-form">
+    <label for="title">
+      <div class="label-container">
+        <span>Title*</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.title) { %>
+          <%= errors.title[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <div class="title-container">
+        <input placeholder="e.g. Harry Potter and the Sorcerer's Stone" type="text" name="title" id="title" value="<%= locals.previousValues && previousValues.title ? previousValues.title : locals.action === 'update' ? bookInfo.title : '' %>" />
+        <button type="button" class="book-search"><img src="/icons/search.svg" alt=""></button>
+      </div>
+
+    </label>
+    <label for="cover_url">
+      <div class="label-container">
+        <span>Link to cover picture</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.cover_url) { %>
+          <%= errors.cover_url[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. https://www.coverexample.png" type="text" name="cover_url" id="cover_url" value="<%= locals.previousValues && previousValues.cover_url? previousValues.cover_url : locals.action === 'update' ? bookInfo.cover_url : '' %>" />
+    </label>
+    <div class="authors-wrapper">
+      <div>
+        <span class="author-label">Available Authors</span>
+        <div class="existing-authors">
+          <% if (locals.existingAuthors) { %>
+          <% existingAuthors.forEach(author => { %>
+          <button type="button" class="add-existing-author-btn" data-authorName="<%= author.name %>">
+            <%= author.name %>
+          </button>
+          <% }) %>
+          <% } %>
+          <% if(!locals.existingAuthors || existingAuthors.length < 1) { %>
+          <span class="empty">No authors found.</span>
+          <% } %>
+        </div>
+
+      </div>
+      <ul class="new-author-errors">
+
+      </ul>
+      <span class="author-label">Selected Authors</span>
+      <div class="selected-authors">
+        <% if(locals.previousValues && previousValues.selected_authors_names) {%>
+        <% previousValues.selected_authors_names.split(', ').forEach((name) => { %>
+        <button type="button" class="selected-author-btn" data-authorName="<%= name  %>">
+          <%= name  %>
+        </button>
+        <%}) %>
+        <%} else if (locals.action === 'update') { %>
+        <% bookInfo.authors.forEach(author => { %>
+        <button type="button" class="selected-author-btn" data-authorName="<%= author.name  %>">
+          <%= author.name  %>
+        </button>
+        <%}) %>
+        <% } %>
+        <button type="button" class="new-author-btn">New Author</button>
+        <input type="hidden" name="new_author_input" id="new_author_input" placeholder="Type author name and press enter">
+      </div>
+      <label for="selected_authors_names">
+        <input type="hidden" name="selected_authors_names" id="selected_authors_names">
+      </label>
+    </div>
+
+    <div class="genres-wrapper">
+      <div>
+        <span class="genre-label">Available Genres</span>
+        <div class="existing-genres">
+          <% if (locals.existingGenres) { %>
+          <% existingGenres.forEach(genre => { %>
+          <button type="button" class="add-existing-genre-btn" data-genreName="<%= genre.name%>">
+            <%= genre.name %>
+          </button>
+          <% }) %>
+          <% } %>
+          <% if(!locals.existingGenres || existingGenres.length < 1) { %>
+          <span class="empty">No genres found.</span>
+          <% } %>
+        </div>
+
+      </div>
+      <ul class="new-genre-errors">
+
+      </ul>
+      <span class="genre-label">Selected Genres</span>
+      <div class="selected-genres">
+        <% if(locals.previousValues && previousValues.selected_genres_names) { %>
+        <% previousValues.selected_genres_names.split(', ').forEach((name) => { %>
+        <button type="button" class="selected-genre-btn" data-genreName="<%= name  %>">
+          <%= name  %>
+        </button>
+        <%}) %>
+        <%} else if (locals.action === 'update') { %>
+        <% bookInfo.genres.forEach(genre => { %>
+        <button type="button" class="selected-genre-btn" data-genreName="<%= genre.name  %>">
+          <%= genre.name  %>
+        </button>
+        <%}) %>
+        <% } %>
+        <button type="button" class="new-genre-btn">New Genre</button>
+        <input type="hidden" name="new_genre_input" id="new_genre_input" placeholder="Type genre name and press enter">
+      </div>
+      <label for="selected_genres_names">
+        <input value="<% locals.previousValues && previousValues.selected_genres_names? previousValues.selected_genres_names : '' %>" type="hidden" name="selected_genres_names" id="selected_genres_names">
+      </label>
+
+    </div>
+
+
+    <label for="length">
+      <div class="label-container">
+        <span>Number of Pages </span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.length) { %>
+          * <%= errors.length[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. 69" type="text" name="length" id="length" value="<%= locals.previousValues && previousValues.length? previousValues.length : locals.action === 'update' ? bookInfo.length : '' %>" />
+    </label>
+    <label for="published_year">
+      <div class="label-container">
+        <span>Year of Publication </span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.published_year) { %>
+          <%= errors.published_year[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. 1980, 200 BC" type="text" name="published_year" id="published_year" value="<%= locals.previousValues && previousValues.published_year? previousValues.published_year : locals.action === 'update' ? bookInfo.published_year : '' %>" />
+    </label>
+    <label for="isbn">
+      <div class="label-container">
+        <span>ISBN*</span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.isbn) { %>
+          <%= errors.isbn[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. B07SBCZ16W" type="text" name="isbn" id="isbn" value="<%= locals.previousValues && previousValues.isbn? previousValues.isbn : locals.action === 'update' ? bookInfo.isbn : '' %>" />
+    </label>
+    <label for="status">
+      <span>Reading Status </span>
+      <select name="status" id="status">
+        <option value="nostatus" <%= locals.previousValues && previousValues.status === 'nostatus'? 'selected' : locals.action === 'update' && bookInfo.status === 'nostatus' && 'selected' %>>Not Set</option>
+        <option value="wanttoread" <%=  locals.previousValues && previousValues.status === 'wanttoread'? 'selected' : locals.action === 'update' && bookInfo.status === 'wanttoread' && 'selected' %>>Want to Read</option>
+        <option value="reading" <%=  locals.previousValues && previousValues.status === 'reading'? 'selected' : locals.action === 'update' && bookInfo.status === 'reading' && 'selected' %>>Reading</option>
+        <option value="read" <%=  locals.previousValues && previousValues.status === 'read'? 'selected' : locals.action === 'update' && bookInfo.status === 'read' && 'selected' %>>Read</option>
+      </select>
+    </label>
+    <label for="more_details_url">
+      <div class="label-container">
+        <span>Link for more details </span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.more_details_url) { %>
+          <%= errors.more_details_url[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <input placeholder="e.g. https://www.goodreads.com/book/harry-potter ..." type="text" name="more_details_url" id="more_details_url" value="<%= locals.previousValues && previousValues.more_details_url? previousValues.more_details_url : locals.action === 'update' ? bookInfo.more_details_url : '' %>" />
+    </label>
+    <label for="description">
+      <div class="label-container">
+        <span>Description </span>
+        <span class="error-msg">
+          <% if(locals.errors && errors.description) { %>
+          <%= errors.description[0] %>
+
+          <% } %>
+        </span>
+      </div>
+
+      <textarea placeholder="e.g. Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry's eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!" name="description" id="description"><%= locals.previousValues && previousValues.description? previousValues.description : locals.action === 'update' ? bookInfo.description : '' %></textarea>
+    </label>
+    <button class="submitBtn" type="submit">Submit</button>
+    <button class="cancelBtn" type="button"><a href="/books">Cancel</a></button>
+  </form>
+</body>
+
+</html>
