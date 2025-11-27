@@ -1,0 +1,305 @@
+.form--book,
+.form--author,
+.form--genre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.form--book form,
+.form--author form,
+.form--genre form {
+  width: min(400px, 80%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form--book form label,
+.form--author form label,
+.form--genre form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form--book form label span,
+.form--author form label span,
+.form--genre form label span {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.form--book form label span.error-msg,
+.form--author form label span.error-msg,
+.form--genre form label span.error-msg {
+  font-size: 12px;
+  color: red;
+  text-transform: uppercase;
+}
+.form--book form label input,
+.form--book form label textarea,
+.form--book form label select#status,
+.form--author form label input,
+.form--author form label textarea,
+.form--author form label select#status,
+.form--genre form label input,
+.form--genre form label textarea,
+.form--genre form label select#status {
+  border: 1px #283618 solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+.form--book form label textarea,
+.form--author form label textarea,
+.form--genre form label textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.form--book form input#new_author_input,
+.form--book form input#new_genre_input,
+.form--author form input#new_author_input,
+.form--author form input#new_genre_input,
+.form--genre form input#new_author_input,
+.form--genre form input#new_genre_input {
+  width: 300px;
+  border: 1px #283618 solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+.form--book form .authors-wrapper,
+.form--book form .genres-wrapper,
+.form--author form .authors-wrapper,
+.form--author form .genres-wrapper,
+.form--genre form .authors-wrapper,
+.form--genre form .genres-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form--book form .authors-wrapper button,
+.form--book form .genres-wrapper button,
+.form--author form .authors-wrapper button,
+.form--author form .genres-wrapper button,
+.form--genre form .authors-wrapper button,
+.form--genre form .genres-wrapper button {
+  font-size: 12px;
+  background-color: #bc6c25;
+  color: #fefae0;
+  border: 1px solid #283618;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.form--book form .authors-wrapper button:hover,
+.form--book form .genres-wrapper button:hover,
+.form--author form .authors-wrapper button:hover,
+.form--author form .genres-wrapper button:hover,
+.form--genre form .authors-wrapper button:hover,
+.form--genre form .genres-wrapper button:hover {
+  background-color: #fefae0;
+  color: #bc6c25;
+}
+.form--book form .authors-wrapper button.new-author-btn, .form--book form .authors-wrapper button.new-genre-btn,
+.form--book form .genres-wrapper button.new-author-btn,
+.form--book form .genres-wrapper button.new-genre-btn,
+.form--author form .authors-wrapper button.new-author-btn,
+.form--author form .authors-wrapper button.new-genre-btn,
+.form--author form .genres-wrapper button.new-author-btn,
+.form--author form .genres-wrapper button.new-genre-btn,
+.form--genre form .authors-wrapper button.new-author-btn,
+.form--genre form .authors-wrapper button.new-genre-btn,
+.form--genre form .genres-wrapper button.new-author-btn,
+.form--genre form .genres-wrapper button.new-genre-btn {
+  background-color: #283618;
+}
+.form--book form .authors-wrapper button.new-author-btn:hover, .form--book form .authors-wrapper button.new-genre-btn:hover,
+.form--book form .genres-wrapper button.new-author-btn:hover,
+.form--book form .genres-wrapper button.new-genre-btn:hover,
+.form--author form .authors-wrapper button.new-author-btn:hover,
+.form--author form .authors-wrapper button.new-genre-btn:hover,
+.form--author form .genres-wrapper button.new-author-btn:hover,
+.form--author form .genres-wrapper button.new-genre-btn:hover,
+.form--genre form .authors-wrapper button.new-author-btn:hover,
+.form--genre form .authors-wrapper button.new-genre-btn:hover,
+.form--genre form .genres-wrapper button.new-author-btn:hover,
+.form--genre form .genres-wrapper button.new-genre-btn:hover {
+  background-color: #fefae0;
+  color: #283618;
+}
+.form--book form .authors-wrapper div.selected-authors,
+.form--book form .authors-wrapper div.selected-genres,
+.form--book form .genres-wrapper div.selected-authors,
+.form--book form .genres-wrapper div.selected-genres,
+.form--author form .authors-wrapper div.selected-authors,
+.form--author form .authors-wrapper div.selected-genres,
+.form--author form .genres-wrapper div.selected-authors,
+.form--author form .genres-wrapper div.selected-genres,
+.form--genre form .authors-wrapper div.selected-authors,
+.form--genre form .authors-wrapper div.selected-genres,
+.form--genre form .genres-wrapper div.selected-authors,
+.form--genre form .genres-wrapper div.selected-genres {
+  border: 1px solid #283618;
+  border-radius: 5px;
+}
+.form--book form .authors-wrapper > div:first-of-type,
+.form--book form .genres-wrapper > div:first-of-type,
+.form--author form .authors-wrapper > div:first-of-type,
+.form--author form .genres-wrapper > div:first-of-type,
+.form--genre form .authors-wrapper > div:first-of-type,
+.form--genre form .genres-wrapper > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form--book form button.submitBtn,
+.form--author form button.submitBtn,
+.form--genre form button.submitBtn {
+  background-color: #486c38;
+  color: #fefae0;
+  padding-block: 10px;
+  border: 2px #486c38 solid;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.form--book form button.submitBtn:hover,
+.form--author form button.submitBtn:hover,
+.form--genre form button.submitBtn:hover {
+  background-color: #fefae0;
+  color: #486c38;
+}
+.form--book form button.cancelBtn,
+.form--author form button.cancelBtn,
+.form--genre form button.cancelBtn {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+.form--book form button.cancelBtn a,
+.form--author form button.cancelBtn a,
+.form--genre form button.cancelBtn a {
+  width: 100%;
+  height: 100%;
+  background-color: #fefae0;
+  color: #bc3225;
+  padding-block: 10px;
+  border: 2px #bc3225 solid;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.form--book form button.cancelBtn a:hover,
+.form--author form button.cancelBtn a:hover,
+.form--genre form button.cancelBtn a:hover {
+  background-color: #bc3225;
+  color: #fefae0;
+}
+.form--book .help,
+.form--author .help,
+.form--genre .help {
+  font-size: 11px;
+  color: green;
+}
+.form--book .title-container,
+.form--book .name-container,
+.form--author .title-container,
+.form--author .name-container,
+.form--genre .title-container,
+.form--genre .name-container {
+  position: relative;
+  display: flex;
+}
+.form--book .title-container input,
+.form--book .name-container input,
+.form--author .title-container input,
+.form--author .name-container input,
+.form--genre .title-container input,
+.form--genre .name-container input {
+  flex: 1;
+}
+.form--book .title-container button,
+.form--book .name-container button,
+.form--author .title-container button,
+.form--author .name-container button,
+.form--genre .title-container button,
+.form--genre .name-container button {
+  position: absolute;
+  right: -5px;
+  transform: translateX(100%);
+  width: 25px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.form--book .title-container button:hover,
+.form--book .name-container button:hover,
+.form--author .title-container button:hover,
+.form--author .name-container button:hover,
+.form--genre .title-container button:hover,
+.form--genre .name-container button:hover {
+  scale: 1.1;
+}
+.form--book .title-container button img,
+.form--book .name-container button img,
+.form--author .title-container button img,
+.form--author .name-container button img,
+.form--genre .title-container button img,
+.form--genre .name-container button img {
+  width: 100%;
+}
+.form--book ul.errors,
+.form--author ul.errors,
+.form--genre ul.errors {
+  width: min(400px, 80%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style-position: inside;
+}
+.form--book ul.errors li,
+.form--author ul.errors li,
+.form--genre ul.errors li {
+  font-size: 12px;
+  color: #bc3225;
+}
+
+.form--book form .existing-authors,
+.form--book form .existing-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+.form--book form .existing-authors span.empty,
+.form--book form .existing-genres span.empty {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.499);
+}
+.form--book form span.author-label,
+.form--book form span.genre-label {
+  font-size: 13px;
+}
+.form--book form .selected-authors,
+.form--book form .selected-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+.form--book ul.new-author-errors,
+.form--book ul.new-genre-errors {
+  list-style-position: inside;
+}
+.form--book ul.new-author-errors li,
+.form--book ul.new-genre-errors li {
+  font-size: 12px;
+  color: #bc3225;
+}
+
+/*# sourceMappingURL=forms.css.map */

@@ -1,0 +1,457 @@
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu";
+  color: #283618;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(221, 162, 94, 0.7568627451) transparent;
+}
+
+html,
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  scrollbar-width: thin;
+  scrollbar-color: transparent;
+}
+
+body {
+  background-color: #fefae0;
+  padding: 10px;
+}
+
+header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+header img.logo {
+  width: 30px;
+  height: 30px;
+}
+header h3.text-logo {
+  color: #dda15e;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+body > section, body > div {
+  width: min(1200px, 100%);
+}
+body form.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+  padding-block: 10px;
+}
+body form.search-form input {
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+  border: #283618 2px solid;
+  border-radius: 10px;
+  background-color: #fefae0;
+  color: #283618;
+}
+body form.search-form button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: transparent 1px solid;
+  cursor: pointer;
+}
+body form.search-form button:hover > img {
+  transform: scale(1.1);
+}
+body form.search-form button img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease-out;
+}
+body .card dialog[open].detailsModal {
+  position: fixed;
+  margin: auto;
+  width: min(95%, 600px);
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.541);
+  background-color: #fefae0;
+  cursor: default;
+}
+body .card dialog[open].detailsModal::backdrop {
+  background-color: rgba(0, 0, 0, 0.499);
+}
+body .card dialog[open].detailsModal .close-btn {
+  position: sticky;
+  top: 0px;
+  margin-left: auto;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.432);
+  color: #fefae0;
+  border: #283618;
+  font-size: 15px;
+  padding: 5px 9px;
+  border-radius: 100px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+body .card dialog[open].detailsModal .close-btn:hover {
+  background-color: #283618;
+}
+body .card dialog[open].detailsModal.book .cover-wrapper,
+body .card dialog[open].detailsModal.book .authors-wrapper,
+body .card dialog[open].detailsModal.book .genres-wrapper,
+body .card dialog[open].detailsModal.book .pages-wrapper,
+body .card dialog[open].detailsModal.book .published-wrapper,
+body .card dialog[open].detailsModal.book .isbn-wrapper,
+body .card dialog[open].detailsModal.book .status-wrapper,
+body .card dialog[open].detailsModal.book .description-wrapper,
+body .card dialog[open].detailsModal.book .learnMore-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+body .card dialog[open].detailsModal.book .cover-wrapper p,
+body .card dialog[open].detailsModal.book .authors-wrapper p,
+body .card dialog[open].detailsModal.book .genres-wrapper p,
+body .card dialog[open].detailsModal.book .pages-wrapper p,
+body .card dialog[open].detailsModal.book .published-wrapper p,
+body .card dialog[open].detailsModal.book .isbn-wrapper p,
+body .card dialog[open].detailsModal.book .status-wrapper p,
+body .card dialog[open].detailsModal.book .description-wrapper p,
+body .card dialog[open].detailsModal.book .learnMore-wrapper p {
+  font-size: 12px;
+}
+body .card dialog[open].detailsModal.book .cover-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+body .card dialog[open].detailsModal.book .cover-wrapper .picture-container {
+  width: 250px;
+}
+body .card dialog[open].detailsModal.book .authors-wrapper,
+body .card dialog[open].detailsModal.book .genres-wrapper {
+  align-items: baseline;
+}
+body .card dialog[open].detailsModal.book .pages-wrapper p,
+body .card dialog[open].detailsModal.book .published-wrapper p,
+body .card dialog[open].detailsModal.book .isbn-wrapper p,
+body .card dialog[open].detailsModal.book .status-wrapper p {
+  color: rgba(0, 0, 0, 0.499);
+  border-radius: 2px;
+  padding: 2px;
+  background-color: rgba(0, 0, 0, 0.145);
+}
+body .card dialog[open].detailsModal.book .status-wrapper p::first-letter {
+  text-transform: capitalize;
+}
+body .card dialog[open].detailsModal.book .description-wrapper {
+  flex-direction: column;
+  align-items: start;
+}
+body .card dialog[open].detailsModal.book .description-wrapper p {
+  white-space: pre-wrap;
+}
+body .card dialog[open].detailsModal.book .learnMore-wrapper button {
+  background-color: #283618;
+  border: #283618 2px solid;
+  border-radius: 5px;
+  transition: all 0.15s ease-in;
+}
+body .card dialog[open].detailsModal.book .learnMore-wrapper button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  width: 100%;
+  height: 100%;
+  color: #fefae0;
+  transition: all 0.15s ease-in;
+}
+body .card dialog[open].detailsModal.book .learnMore-wrapper button:hover {
+  background-color: #fefae0;
+}
+body .card dialog[open].detailsModal.book .learnMore-wrapper button:hover a {
+  color: #283618;
+}
+body .card dialog[open].detailsModal.author .cover-wrapper,
+body .card dialog[open].detailsModal.author .biography-wrapper,
+body .card dialog[open].detailsModal.author .description-wrapper,
+body .card dialog[open].detailsModal.author .works-wrapper,
+body .card dialog[open].detailsModal.author .books-wrapper, body .card dialog[open].detailsModal.genre .cover-wrapper,
+body .card dialog[open].detailsModal.genre .biography-wrapper,
+body .card dialog[open].detailsModal.genre .description-wrapper,
+body .card dialog[open].detailsModal.genre .works-wrapper,
+body .card dialog[open].detailsModal.genre .books-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+body .card dialog[open].detailsModal.author .cover-wrapper p,
+body .card dialog[open].detailsModal.author .biography-wrapper p,
+body .card dialog[open].detailsModal.author .description-wrapper p,
+body .card dialog[open].detailsModal.author .works-wrapper p,
+body .card dialog[open].detailsModal.author .books-wrapper p, body .card dialog[open].detailsModal.genre .cover-wrapper p,
+body .card dialog[open].detailsModal.genre .biography-wrapper p,
+body .card dialog[open].detailsModal.genre .description-wrapper p,
+body .card dialog[open].detailsModal.genre .works-wrapper p,
+body .card dialog[open].detailsModal.genre .books-wrapper p {
+  font-size: 12px;
+}
+body .card dialog[open].detailsModal.author .cover-wrapper, body .card dialog[open].detailsModal.genre .cover-wrapper {
+  align-items: center;
+}
+body .card dialog[open].detailsModal.author .cover-wrapper .picture-container, body .card dialog[open].detailsModal.genre .cover-wrapper .picture-container {
+  width: 250px;
+}
+body .card dialog[open].detailsModal.author .biography-wrapper p,
+body .card dialog[open].detailsModal.author .description-wrapper p, body .card dialog[open].detailsModal.genre .biography-wrapper p,
+body .card dialog[open].detailsModal.genre .description-wrapper p {
+  white-space: pre-wrap;
+}
+body .card dialog[open].detailsModal.author .works-wrapper .works,
+body .card dialog[open].detailsModal.author .works-wrapper .books,
+body .card dialog[open].detailsModal.author .books-wrapper .works,
+body .card dialog[open].detailsModal.author .books-wrapper .books, body .card dialog[open].detailsModal.genre .works-wrapper .works,
+body .card dialog[open].detailsModal.genre .works-wrapper .books,
+body .card dialog[open].detailsModal.genre .books-wrapper .works,
+body .card dialog[open].detailsModal.genre .books-wrapper .books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+body .card dialog[open].detailsModal.author .works-wrapper .works .work,
+body .card dialog[open].detailsModal.author .works-wrapper .works .book,
+body .card dialog[open].detailsModal.author .works-wrapper .books .work,
+body .card dialog[open].detailsModal.author .works-wrapper .books .book,
+body .card dialog[open].detailsModal.author .books-wrapper .works .work,
+body .card dialog[open].detailsModal.author .books-wrapper .works .book,
+body .card dialog[open].detailsModal.author .books-wrapper .books .work,
+body .card dialog[open].detailsModal.author .books-wrapper .books .book, body .card dialog[open].detailsModal.genre .works-wrapper .works .work,
+body .card dialog[open].detailsModal.genre .works-wrapper .works .book,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .work,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .book,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .work,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .book,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .work,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .book {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+body .card dialog[open].detailsModal.author .works-wrapper .works .work .cover-container,
+body .card dialog[open].detailsModal.author .works-wrapper .works .book .cover-container,
+body .card dialog[open].detailsModal.author .works-wrapper .books .work .cover-container,
+body .card dialog[open].detailsModal.author .works-wrapper .books .book .cover-container,
+body .card dialog[open].detailsModal.author .books-wrapper .works .work .cover-container,
+body .card dialog[open].detailsModal.author .books-wrapper .works .book .cover-container,
+body .card dialog[open].detailsModal.author .books-wrapper .books .work .cover-container,
+body .card dialog[open].detailsModal.author .books-wrapper .books .book .cover-container, body .card dialog[open].detailsModal.genre .works-wrapper .works .work .cover-container,
+body .card dialog[open].detailsModal.genre .works-wrapper .works .book .cover-container,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .work .cover-container,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .book .cover-container,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .work .cover-container,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .book .cover-container,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .work .cover-container,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .book .cover-container {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: 5px;
+}
+body .card dialog[open].detailsModal.author .works-wrapper .works .work img,
+body .card dialog[open].detailsModal.author .works-wrapper .works .book img,
+body .card dialog[open].detailsModal.author .works-wrapper .books .work img,
+body .card dialog[open].detailsModal.author .works-wrapper .books .book img,
+body .card dialog[open].detailsModal.author .books-wrapper .works .work img,
+body .card dialog[open].detailsModal.author .books-wrapper .works .book img,
+body .card dialog[open].detailsModal.author .books-wrapper .books .work img,
+body .card dialog[open].detailsModal.author .books-wrapper .books .book img, body .card dialog[open].detailsModal.genre .works-wrapper .works .work img,
+body .card dialog[open].detailsModal.genre .works-wrapper .works .book img,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .work img,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .book img,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .work img,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .book img,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .work img,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+body .card dialog[open].detailsModal.author .works-wrapper .works .work p,
+body .card dialog[open].detailsModal.author .works-wrapper .works .book p,
+body .card dialog[open].detailsModal.author .works-wrapper .books .work p,
+body .card dialog[open].detailsModal.author .works-wrapper .books .book p,
+body .card dialog[open].detailsModal.author .books-wrapper .works .work p,
+body .card dialog[open].detailsModal.author .books-wrapper .works .book p,
+body .card dialog[open].detailsModal.author .books-wrapper .books .work p,
+body .card dialog[open].detailsModal.author .books-wrapper .books .book p, body .card dialog[open].detailsModal.genre .works-wrapper .works .work p,
+body .card dialog[open].detailsModal.genre .works-wrapper .works .book p,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .work p,
+body .card dialog[open].detailsModal.genre .works-wrapper .books .book p,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .work p,
+body .card dialog[open].detailsModal.genre .books-wrapper .works .book p,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .work p,
+body .card dialog[open].detailsModal.genre .books-wrapper .books .book p {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+body .card .empty {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body section.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body section.container > div:first-child {
+  display: flex;
+  align-items: center;
+}
+body section.container .addBtn {
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin-left: auto;
+}
+body section.container .addBtn a {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #486c38;
+  color: #fefae0;
+  border-radius: 5px;
+  border: #486c38 2px solid;
+  transition: all 0.1s ease-in-out;
+}
+body section.container .addBtn a:hover {
+  background-color: #fefae0;
+  color: #486c38;
+}
+body section.container .actionBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: auto;
+}
+body section.container .actionBtns button.updateBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+body section.container .actionBtns button.updateBtn > a,
+body section.container .actionBtns button.deleteBtn {
+  width: 100%;
+  background-color: #283618;
+  color: #fefae0;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: #fefae0 2px solid;
+  transition: all 0.1s ease-in-out;
+}
+body section.container .actionBtns button.updateBtn > a:hover,
+body section.container .actionBtns button.deleteBtn:hover {
+  border-color: #283618;
+  background-color: #fefae0;
+  color: #283618;
+}
+body section.container .actionBtns button.deleteBtn {
+  background-color: #bc3225;
+  cursor: pointer;
+}
+body section.container .actionBtns button.deleteBtn:hover {
+  border-color: #bc3225;
+  background-color: #fefae0;
+  color: #bc3225;
+}
+
+@media (width <= 700px) {
+  body section.container > div {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+dialog[open].confirmModal {
+  position: fixed;
+  margin: auto;
+  width: min(500px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fefae0;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.541);
+  cursor: default;
+}
+dialog[open].confirmModal::backdrop {
+  background-color: rgba(0, 0, 0, 0.499);
+}
+dialog[open].confirmModal p > span {
+  font-weight: bold;
+}
+dialog[open].confirmModal .buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+dialog[open].confirmModal .buttons button {
+  border: 2px solid;
+  border-radius: 5px;
+  color: #fefae0;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+dialog[open].confirmModal .buttons button.confirm-btn {
+  border-color: #bc3225;
+  background-color: #bc3225;
+}
+dialog[open].confirmModal .buttons button.confirm-btn:hover {
+  background-color: transparent;
+  color: #bc3225;
+}
+dialog[open].confirmModal .buttons button.cancel-btn {
+  display: flex;
+  justify-content: center;
+  color: #283618;
+  background-color: transparent;
+}
+dialog[open].confirmModal .buttons button.cancel-btn:hover {
+  background-color: #283618;
+  color: #fefae0;
+}
+
+/*# sourceMappingURL=main.css.map */
