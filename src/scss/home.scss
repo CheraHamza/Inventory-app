@@ -101,3 +101,11 @@ $dark-brown: #bc6c25;
 		}
 	}
 }
+
+@media (width <= 400px) {
+	.homepage {
+		section.links section {
+			aspect-ratio: 4.5 / 1.6;
+		}
+	}
+}

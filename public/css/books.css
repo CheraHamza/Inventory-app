@@ -125,5 +125,10 @@
     max-width: 300px;
   }
 }
+@media (width <= 400px) {
+  .booksPage .books {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+  }
+}
 
 /*# sourceMappingURL=books.css.map */

@@ -22,8 +22,8 @@ $dark-brown: #bc6c25;
 
 html,
 body {
-	min-height: 100vh;
-	max-width: 100vw;
+	min-height: 100dvh;
+	max-width: 100dvw;
 	scrollbar-width: thin;
 	scrollbar-color: transparent;
 }
@@ -323,6 +323,7 @@ body {
 
 		& > div:first-child {
 			display: flex;
+			flex-direction: row;
 			align-items: center;
 		}
 

@@ -14,8 +14,8 @@
 
 html,
 body {
-  min-height: 100vh;
-  max-width: 100vw;
+  min-height: 100dvh;
+  max-width: 100dvw;
   scrollbar-width: thin;
   scrollbar-color: transparent;
 }
@@ -335,6 +335,7 @@ body section.container {
 }
 body section.container > div:first-child {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 body section.container .addBtn {

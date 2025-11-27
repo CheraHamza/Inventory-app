@@ -10,8 +10,7 @@ $dark-brown: #bc6c25;
 		flex-direction: column;
 		gap: 10px;
 	}
-	.container > .authors,
-	.authors-section > .authors {
+	.container > .authors {
 		display: grid;
 		justify-content: center;
 		grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
@@ -85,6 +84,14 @@ $dark-brown: #bc6c25;
 					}
 				}
 			}
+		}
+	}
+}
+
+@media (width <= 400px) {
+	.authorsPage {
+		.container > .authors {
+			grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
 		}
 	}
 }

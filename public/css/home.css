@@ -77,5 +77,10 @@
     gap: 20px;
   }
 }
+@media (width <= 400px) {
+  .homepage section.links section {
+    aspect-ratio: 4.5/1.6;
+  }
+}
 
 /*# sourceMappingURL=home.css.map */

@@ -3,15 +3,13 @@
   flex-direction: column;
   gap: 10px;
 }
-.genresPage .container > .genres,
-.genresPage .genres-section > .genres {
+.genresPage .container > .genres {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
   gap: 30px 30px;
 }
-.genresPage .container > .genres > .genre,
-.genresPage .genres-section > .genres > .genre {
+.genresPage .container > .genres > .genre {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,24 +21,27 @@
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
-.genresPage .container > .genres > .genre:hover > div.picture-container:first-child > img,
-.genresPage .genres-section > .genres > .genre:hover > div.picture-container:first-child > img {
+.genresPage .container > .genres > .genre:hover > div.picture-container:first-child > img {
   transform: scale(1.05);
 }
-.genresPage .container > .genres > .genre div.picture-container,
-.genresPage .genres-section > .genres > .genre div.picture-container {
+.genresPage .container > .genres > .genre div.picture-container {
   width: 100%;
   aspect-ratio: 2/2;
   overflow: hidden;
   border-radius: 5px;
 }
-.genresPage .container > .genres > .genre div.picture-container img,
-.genresPage .genres-section > .genres > .genre div.picture-container img {
+.genresPage .container > .genres > .genre div.picture-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   transition: all 0.3s ease-in-out;
+}
+
+@media (width <= 400px) {
+  .genresPage .container > .genres {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+  }
 }
 
 /*# sourceMappingURL=genres.css.map */

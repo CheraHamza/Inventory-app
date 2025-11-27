@@ -11,8 +11,7 @@ $dark-brown: #bc6c25;
 		gap: 10px;
 	}
 
-	.container > .genres,
-	.genres-section > .genres {
+	.container > .genres {
 		display: grid;
 		justify-content: center;
 		grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
@@ -53,6 +52,14 @@ $dark-brown: #bc6c25;
 					transition: all 0.3s ease-in-out;
 				}
 			}
+		}
+	}
+}
+
+@media (width <= 400px) {
+	.genresPage {
+		.container > .genres {
+			grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
 		}
 	}
 }

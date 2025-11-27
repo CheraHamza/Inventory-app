@@ -148,3 +148,11 @@ $dark-brown: #bc6c25;
 		}
 	}
 }
+
+@media (width <= 400px) {
+	.booksPage {
+		.books {
+			grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+		}
+	}
+}
