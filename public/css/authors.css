@@ -24,6 +24,12 @@
 .authorsPage .container > .authors div.author:hover > div.picture-container:first-child > img {
   transform: scale(1.05);
 }
+.authorsPage .container > .authors div.author h4.authorName {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .authorsPage .container > .authors div.author div.picture-container {
   width: 100%;
   aspect-ratio: 2/3;
@@ -50,6 +56,7 @@
   padding-block: 5px;
 }
 .authorsPage .container > .authors div.author > .works-wrapper > .works {
+  max-width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
@@ -69,6 +76,12 @@
 @media (width <= 400px) {
   .authorsPage .container > .authors {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+  }
+  .authorsPage .container > .authors .author h4.authorName {
+    font-size: 14px;
+  }
+  .authorsPage .container > .authors .author h5.bookTitle {
+    font-size: 12px;
   }
 }
 

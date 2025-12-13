@@ -73,11 +73,17 @@
   padding-bottom: 10px;
   border: 2px rgba(0, 0, 0, 0.499) solid;
   border-radius: 5px;
+  height: 100%;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
 .booksPage .books .book.card:hover > div.picture-container:first-child > img {
   transform: scale(1.05);
+}
+.booksPage .books .book.card h3.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .booksPage .books .book.card div.picture-container {
   width: 100%;
@@ -107,6 +113,9 @@
   color: rgba(0, 0, 0, 0.458);
   padding: 2px;
   border-radius: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .booksPage .books .book.card div.authors span.genreName,
 .booksPage .books .book.card div.genres span.genreName {
@@ -128,6 +137,9 @@
 @media (width <= 400px) {
   .booksPage .books {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+  }
+  .booksPage .book.card h3.title {
+    font-size: 14px;
   }
 }
 

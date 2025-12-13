@@ -1,10 +1,10 @@
 <div class="picture-container">
   <img src="<%= author.picture_url %>" alt="picture of author">
 </div>
-<h3><%= author.name %></h3>
+<h4 class="authorName"><%= author.name %></h4>
 <p class="lifespan">(<%= author.birth_year && author.birth_year %> – <%= author.death_year && author.death_year %>)</p>
 <div class="works-wrapper">
-  <h4>Books</h4>
+  <h5 class="booksTitle">Books</h5>
   <div class="works">
     <% author.works.forEach((work) => { %>
     <div class="work">

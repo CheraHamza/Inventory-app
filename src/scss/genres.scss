@@ -39,6 +39,13 @@ $dark-brown: #bc6c25;
 				}
 			}
 
+			.genreName {
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
 			div.picture-container {
 				width: 100%;
 				aspect-ratio: 2 / 2;
@@ -60,6 +67,12 @@ $dark-brown: #bc6c25;
 	.genresPage {
 		.container > .genres {
 			grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+
+			.genre {
+				.genreName {
+					font-size: 14px;
+				}
+			}
 		}
 	}
 }

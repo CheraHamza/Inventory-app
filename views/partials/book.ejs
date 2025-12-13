@@ -2,7 +2,7 @@
   <img class="cover" src="<%= book.cover_url%>" alt="book cover" />
 </div>
 
-<h3 class="title"><%= book.title%></h3>
+<h4 class="title"><%= book.title%></h4>
 <div class="authors">
   <% book.authors.forEach((author) => {%>
   <span class="authorName" data-authorId="<%= author.id %>"> <%= author.name %> </span>

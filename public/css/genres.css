@@ -24,6 +24,12 @@
 .genresPage .container > .genres > .genre:hover > div.picture-container:first-child > img {
   transform: scale(1.05);
 }
+.genresPage .container > .genres > .genre .genreName {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .genresPage .container > .genres > .genre div.picture-container {
   width: 100%;
   aspect-ratio: 2/2;
@@ -41,6 +47,9 @@
 @media (width <= 400px) {
   .genresPage .container > .genres {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+  }
+  .genresPage .container > .genres .genre .genreName {
+    font-size: 14px;
   }
 }
 
