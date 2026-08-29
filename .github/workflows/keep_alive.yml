@@ -3,18 +3,25 @@ name: Aiven Keep Alive
 on:
   schedule:
     # Runs every 12 hours
-    - cron: '0 0,12 * * *'
-  workflow_dispatch: 
+    - cron: "0 0,12 * * *"
+  workflow_dispatch:
 
-jobs: 
+jobs:
   ping-db:
     runs-on: ubuntu-latest
     steps:
       - name: Install PostgreSQL Client
-        run : sudo apt-get update && sudo apt-get install -y postgresql-client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
 
-      - name: Ping Database
+      - name: 1. Ping Database
         env:
           DB_URI: ${{ secrets.AIVEN_DB_URI }}
         run: |
           psql "$DB_URI" -c "SELECT 1;"
+
+      - name: 2. Ping Aiven API
+        env:
+          AIVEN_TOKEN: ${{ secrets.AIVEN_TOKEN }}
+        run: |
+          curl -s -f -H "Authorization: aivenaf ${AIVEN_TOKEN}" \
+            https://api.aiven.io/v1/project > /dev/null
