@@ -23,5 +23,5 @@ jobs:
         env:
           AIVEN_TOKEN: ${{ secrets.AIVEN_TOKEN }}
         run: |
-          curl -s -f -H "Authorization: aivenaf ${AIVEN_TOKEN}" \
+          curl -sS -f -H "Authorization: aivenv1 $AIVEN_TOKEN" \
             https://api.aiven.io/v1/project > /dev/null
